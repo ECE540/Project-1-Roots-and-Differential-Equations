@@ -34,6 +34,27 @@ intGuess = linspace(-3, 3, 600);
 
 %Find roots of each guess
 roots = zeros(1, 600);
+funcPoint = zeros(1, 600);
 for i = 1:600
-    roots(i) = NewtonRaphson(intGuess(i), func, derivFunc, 1e-10, 400);
+    roots(i) = NewtonRaphson(intGuess(i), func, derivFunc, exp(-6), 100);
+    funcPoint(i) = derivFunc(intGuess(i));
 end
+
+%Make a graph of which root found for each intial guess
+figure();
+plot(intGuess, roots);
+title("Roots Found Based on Different Intial Guesses");
+xlabel("Interval of Roots Tested from -3 to 3");
+ylabel("Found Root");
+
+hold on;
+
+figure();
+fplot(func, [-3 3]);
+ylim([-2 2]);
+grid on;
+title("Function x^1^0 - 10x^5 + 0.5e^x - .45");
+xlabel("X Value");
+ylabel("Y Result");
+
+%Compare against Bisection

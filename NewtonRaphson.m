@@ -12,22 +12,26 @@ function [root, numIterations] = NewtonRaphson(intGuess, func,...
 %       Outputs:root, root location
 %               numIterations, numb of iterations it took to find the root
 
-%Set to zero at the start
+%Set intial values at the start
 numIterations = 0;
 root = intGuess;
 
 %Loop until maxNumIterations reached
 while(numIterations <= maxNumIterations)
+    %Result of plugging in the root
     y = func(root);
+    %Derivative at the point
     yPrime = derivFunc(root);
+    %Calculate where root would be on a straight line
     x = root - (y / yPrime);
     
-    if (((x - root) / x) < error)
+    %If it is close to same number calculate just before, assume root found
+    if (abs((x - root) / x) < error)
         root = x;
         return
     end
     
+    %Set as current root
     root = x;
 end
 end
-
