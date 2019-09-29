@@ -33,5 +33,7 @@ while(numIterations <= maxNumIterations)
     
     %Set as current root
     root = x;
+    
+    numIterations = numIterations + 1;
 end
 end

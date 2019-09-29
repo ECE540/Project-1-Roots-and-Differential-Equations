@@ -58,3 +58,5 @@ xlabel("X Value");
 ylabel("Y Result");
 
 %Compare against Bisection
+[bisectIterate, bisectRoot] = Bisection(func, .5, 1.5, exp(-10), 400);
+[newtRoot, newtIterate] = NewtonRaphson(.5, func, derivFunc, exp(-10), 400);
