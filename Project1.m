@@ -40,15 +40,14 @@ for i = 1:600
     funcPoint(i) = derivFunc(intGuess(i));
 end
 
-%Make a graph of which root found for each intial guess
+% Make a graph of which root found for each intial guess
 figure();
 plot(intGuess, roots);
 title("Roots Found Based on Different Intial Guesses");
 xlabel("Interval of Roots Tested from -3 to 3");
 ylabel("Found Root");
 
-hold on;
-
+% Graph of the function
 figure();
 fplot(func, [-3 3]);
 ylim([-2 2]);
@@ -57,6 +56,14 @@ title("Function x^1^0 - 10x^5 + 0.5e^x - .45");
 xlabel("X Value");
 ylabel("Y Result");
 
-%Compare against Bisection
+% Compare against Bisection
 [bisectIterate, bisectRoot] = Bisection(func, .5, 1.5, exp(-10), 400);
 [newtRoot, newtIterate] = NewtonRaphson(.5, func, derivFunc, exp(-10), 400);
+
+% Problem 3
+derivFunc = @(x) -6 * x;
+startPoint = 0;
+endPoint = 5;
+stepSize = 1/4;
+ForwardEuler(derivFunc, startPoint, endPoint, stepSize, 1);
+BackwardEuler(derivFunc, startPoint, endPoint, stepSize, 1);
