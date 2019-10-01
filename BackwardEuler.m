@@ -15,8 +15,7 @@ func(1,1) = intFx;
 while(xProgress < finalX)
     iterate = iterate + 1;
     x = xProgress + step;
-    slope = derivFunc(x);
-    newFunc = @(y) slope*(-1 * step) - yCurrent + y;
+    newFunc = @(y) y - step * derivFunc(y) - yCurrent;
     func(1, iterate) = SecantMethod(newFunc, xProgress, x);
     yCurrent = func(1, iterate);
     xProgress = x;
@@ -24,8 +23,8 @@ end
 
 % Graph of the function based off of BackwardEuler
 figure();
-plot(intX:iterate-1, func);
+plot(linspace(intX, finalX, iterate), func);
 title("Function as Found by Backward Euler");
-xlabel("Points Used");
-ylabel("Backward Euler Result");
+xlabel("X-Value");
+ylabel("Function Value");
 end    

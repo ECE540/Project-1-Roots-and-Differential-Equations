@@ -22,6 +22,7 @@ xProgress = intX;
 iterate = 1;
 % Set up array func which is returned
 func = zeros(1, (finalX - intX) / step);
+% Add first, known point
 func(1,1) = intFx;
 
 % Loop until reach final point
@@ -37,8 +38,9 @@ end
 
 % Graph of the function based off of ForwardEuler
 figure();
-plot(intX:iterate-1, func);
+% Graph setup to show the ra
+plot(linspace(intX, finalX, iterate), func);
 title("Function as Found by Forward Euler");
-xaxis("Points which 
-
+xlabel("X-Value");
+ylabel("Function Value");
 end

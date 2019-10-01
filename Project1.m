@@ -61,9 +61,9 @@ ylabel("Y Result");
 [newtRoot, newtIterate] = NewtonRaphson(.5, func, derivFunc, exp(-10), 400);
 
 % Problem 3
-derivFunc = @(x) -6 * x;
+derivFunc = @(x) -8 * x;
 startPoint = 0;
-endPoint = 5;
-stepSize = 1/4;
+endPoint = 10;
+stepSize = 1/2;
 ForwardEuler(derivFunc, startPoint, endPoint, stepSize, 1);
 BackwardEuler(derivFunc, startPoint, endPoint, stepSize, 1);
