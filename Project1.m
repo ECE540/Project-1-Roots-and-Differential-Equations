@@ -41,20 +41,20 @@ for i = 1:600
 end
 
 % Make a graph of which root found for each intial guess
-figure();
-plot(intGuess, roots);
-title("Roots Found Based on Different Intial Guesses");
-xlabel("Interval of Roots Tested from -3 to 3");
-ylabel("Found Root");
+% figure();
+% plot(intGuess, roots);
+% title("Roots Found Based on Different Intial Guesses");
+% xlabel("Interval of Roots Tested from -3 to 3");
+% ylabel("Found Root");
 
 % Graph of the function
-figure();
-fplot(func, [-3 3]);
-ylim([-2 2]);
-grid on;
-title("Function x^1^0 - 10x^5 + 0.5e^x - .45");
-xlabel("X Value");
-ylabel("Y Result");
+% figure();
+% fplot(func, [-3 3]);
+% ylim([-2 2]);
+% grid on;
+% title("Function x^1^0 - 10x^5 + 0.5e^x - .45");
+% xlabel("X Value");
+% ylabel("Y Result");
 
 % Compare against Bisection
 [bisectIterate, bisectRoot] = Bisection(func, .5, 1.5, exp(-10), 400);
@@ -64,6 +64,11 @@ ylabel("Y Result");
 derivFunc = @(x) -8 * x;
 startPoint = 0;
 endPoint = 10;
-stepSize = 1/2;
+% Will change
+stepSize = 1/1000000;
+tic
 ForwardEuler(derivFunc, startPoint, endPoint, stepSize, 1);
+toc
+tic
 BackwardEuler(derivFunc, startPoint, endPoint, stepSize, 1);
+toc
